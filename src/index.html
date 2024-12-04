@@ -3,9 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./style.css" rel="stylesheet" />
+    <title>Calculator Project</title>
+    <link href="./output.css" rel="stylesheet" />
   </head>
-  <body>
-    <h1 class="text-3xl font-bold underline text-gray-100">Hello world!</h1>
+  <body class="bg-gray-900">
+    <!-- project heading -->
+    <h1 class="text-5xl font-bold m-auto w-[600px] pt-14 text-slate-200">
+      CALCULATOR PROJECT
+    </h1>
+    <div>
+      <!-- Validation Error -->
+      <div class="flex justify-center gap-10 pt-8 mt-12">
+        <span class="me-32 mb-8" id="validateOne"></span>
+      </div>
+      <form class="flex justify-center align-baseline space-x-6">
+        <!-- first input -->
+        <input
+          type="text"
+          name=""
+          id="inputOne"
+          class="h-8 border-black rounded-full text-center font-bold"
+          placeholder="Enter first digit here"
+        />
+        <!-- Operator Display -->
+        <span
+          class="bg-slate-200 text-black rounded-full w-20 text-center m-auto text-[20px] font-bold"
+          id="operatorDisplay"
+        ></span>
+        <!-- second input -->
+        <input
+          type="text"
+          name=""
+          id="inputTwo"
+          placeholder="Enter second digit here "
+          class="h-8 border-black rounded-full text-center font-bold"
+        />
+        <!-- Equal To button -->
+        <button
+          class="bg-black text-white w-12 text-3xl rounded-full"
+          id="equal"
+        >
+          =
+        </button>
+        <!-- Answer Display -->
+        <span class="text-white font-bold text-3xl" id="showAnswer"></span>
+      </form>
+      <!-- Operator buttons -->
+      <div class="flex space-x-10 m-auto w-96 mt-10 ms-auto">
+        <button id="addition" class="bg-black text-white w-12 text-3xl">
+          +</button
+        ><button id="subtraction" class="bg-black text-white w-12 text-3xl">
+          -</button
+        ><button id="multiply" class="bg-black text-white w-12 text-3xl">
+          *</button
+        ><button id="divide" class="bg-black text-white w-12 text-3xl">
+          /
+        </button>
+        <!-- Clear All Button -->
+        <button
+          type="reset"
+          id="reset"
+          class="bg-black text-white w-20 text-2xl"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+    <script src="app.js"></script>
   </body>
 </html>
