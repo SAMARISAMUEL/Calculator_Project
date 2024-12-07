@@ -1,12 +1,10 @@
 const inputOne = document.getElementById("inputOne");
 const inputTwo = document.getElementById("inputTwo");
-const validateOne = document.getElementById("validateOne");
-const validateTwo = document.getElementById("validateTwo");
+const validate = document.getElementById("validate");
 const addition = document.getElementById("addition");
 const subtraction = document.getElementById("subtraction");
 const multiply = document.getElementById("multiply");
 const divide = document.getElementById("divide");
-const modulus = document.getElementById("modulus");
 const equal = document.getElementById("equal");
 const showAnswer = document.getElementById("showAnswer");
 const operatorDisplay = document.getElementById("operatorDisplay");
@@ -14,45 +12,48 @@ const reset = document.getElementById("reset");
 // Operators Display
 addition.addEventListener("click", () => {
   operatorDisplay.textContent = "+";
-  validateOne.textContent = "";
+  validate.textContent = "";
 });
 subtraction.addEventListener("click", () => {
   operatorDisplay.textContent = "-";
-  validateOne.textContent = "";
+  validate.textContent = "";
 });
 multiply.addEventListener("click", () => {
   operatorDisplay.textContent = "*";
-  validateOne.textContent = "";
+  validate.textContent = "";
 });
 divide.addEventListener("click", () => {
   operatorDisplay.textContent = "/";
-  validateOne.textContent = "";
+  validate.textContent = "";
 });
 
 equal.addEventListener("click", (event) => {
   //stop the page from refreshing
   event.preventDefault();
-  // parse input one
-  const inputDigitOneFloat = parseFloat(inputOne.value);
-
+  //Trim input for whitespace
+  const inputOneTrim = inputOne.value.trim();
+  const inputTwoTrim = inputTwo.value.trim();
+  // Input one number convertion
+  const inputDigitOneNumber = Number(inputOneTrim);
   //parse input two
-  const inputDigitTwoFloat = parseFloat(inputTwo.value);
+  const inputDigitTwoNumber = Number(inputTwoTrim);
+
   //Validation calls
 
   if (inputOne.value === "") {
-    validateOne.textContent = "**Please Enter a value in the first box";
-    validateOne.style.color = "red";
+    validate.textContent = "**Please Enter a value in the first box";
+    validate.style.color = "red";
   } else if (inputTwo.value === "") {
-    validateOne.textContent = "**Please Enter a value in the second input box";
-    validateOne.style.color = "red";
-  } else if (isNaN(inputDigitOneFloat)) {
-    validateOne.textContent =
+    validate.textContent = "**Please Enter a value in the second input box";
+    validate.style.color = "red";
+  } else if (isNaN(inputDigitOneNumber)) {
+    validate.textContent =
       "**Please enter a valid number in the first box, not a string or symbol";
-    validateOne.style.color = "red";
-  } else if (isNaN(inputDigitTwoFloat)) {
-    validateOne.textContent =
+    validate.style.color = "red";
+  } else if (isNaN(inputDigitTwoNumber)) {
+    validate.textContent =
       "**Please enter a valid number in the second box, not a string or symbol";
-    validateOne.style.color = "red";
+    validate.style.color = "red";
   }
   //Perform arithmetic Operations
   else {
@@ -61,26 +62,26 @@ equal.addEventListener("click", (event) => {
 
     switch (operator) {
       case "+":
-        result = inputDigitOneFloat + inputDigitTwoFloat;
+        result = inputDigitOneNumber + inputDigitTwoNumber;
         break;
       case "-":
-        result = inputDigitOneFloat - inputDigitTwoFloat;
+        result = inputDigitOneNumber - inputDigitTwoNumber;
         break;
       case "*":
-        result = inputDigitOneFloat * inputDigitTwoFloat;
+        result = inputDigitOneNumber * inputDigitTwoNumber;
         break;
       case "/":
-        if (inputDigitTwoFloat === 0) {
-          validateOne.textContent = "**Cannot divide by zero";
-          validateOne.style.color = "red";
+        if (inputDigitTwoNumber === 0) {
+          validate.textContent = "**Cannot divide by zero";
+          validate.style.color = "red";
           return;
         }
-        result = inputDigitOneFloat / inputDigitTwoFloat;
+        result = inputDigitOneNumber / inputDigitTwoNumber;
         break;
 
       default:
-        validateOne.textContent = "**Please select an operator";
-        validateOne.style.color = "red";
+        validate.textContent = "**Please select an operator";
+        validate.style.color = "red";
         return;
     }
 
@@ -90,12 +91,12 @@ equal.addEventListener("click", (event) => {
 //Clear validation and display
 inputOne.addEventListener("click", () => {
   showAnswer.textContent = "";
-  validateOne.textContent = "";
+  validate.textContent = "";
   operatorDisplay.textContent = "";
 });
 inputTwo.addEventListener("click", () => {
   showAnswer.textContent = "";
-  validateOne.textContent = "";
+  validate.textContent = "";
   operatorDisplay.textContent = "";
 });
 
@@ -104,6 +105,6 @@ reset.addEventListener("click", () => {
   inputOne.value = "";
   inputTwo.value = "";
   showAnswer.textContent = "";
-  validateOne.textContent = "";
+  validate.textContent = "";
   operatorDisplay.textContent = "";
 });
